@@ -1,5 +1,7 @@
 # Quenya DSL
 
+[![Build Status](https://travis-ci.org/music-of-the-ainur/quenya-dsl.svg?branch=master)](https://travis-ci.org/music-of-the-ainur/quenya-dsl)
+
 ## Introduction
 Quenya DSL(Domain Specific Language) is a language that simplifies the task to parser complex semi-structured data.
 
