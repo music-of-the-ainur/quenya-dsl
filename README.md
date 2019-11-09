@@ -103,7 +103,7 @@ Output:
 
 ```
 +------------+
-|wepon       |
+|weapon      |
 +------------+
 |Glamdring   |
 |Narya       |
