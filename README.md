@@ -5,7 +5,7 @@
 Adding Quenya DSL dependency to your sbt build:
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-2.4"
+libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-2.3"
 ```
 
 ## Introduction
@@ -62,7 +62,7 @@ JSON
       "Wizard Staff"
    ]
 }
-```
+    ```
 
 Output:
 
@@ -195,11 +195,11 @@ You can _alias_ using the fully qualified name using ```printDsl(df,true)```, yo
 
 ## Requirements
 
-| Software     | Version   |
-|--------------|-----------|
-| Java         | 8         |
-| Scala        | 2.11/2.12 |
-| Apache Spark | 2.4       |
+| Software     | Version |
+|--------------|---------|
+| Java         | 8       |
+| Scala        | 2.11    |
+| Apache Spark | 2.3     |
 
 ## Author
 Daniel Mantovani [daniel.mantovani@modakanalytics.com](mailto:daniel.mantovani@modakanalytics.com)
