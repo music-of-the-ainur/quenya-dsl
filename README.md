@@ -2,6 +2,12 @@
 
 [![Build Status](https://travis-ci.org/music-of-the-ainur/quenya-dsl.svg?branch=master)](https://travis-ci.org/music-of-the-ainur/quenya-dsl)
 
+Adding Quenya DSL dependency to your sbt build:
+
+```
+libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-2.4"
+```
+
 ## Introduction
 Quenya DSL(Domain Specific Language) is a language that simplifies the task to parser complex semi-structured data.
 
@@ -103,7 +109,7 @@ Output:
 
 ```
 +------------+
-|wepon       |
+|weapon      |
 +------------+
 |Glamdring   |
 |Narya       |
