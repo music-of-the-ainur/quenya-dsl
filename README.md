@@ -5,7 +5,7 @@
 Adding Quenya DSL dependency to your sbt build:
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-2.3"
+libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-2.2"
 ```
 
 ## Introduction
@@ -199,7 +199,7 @@ You can _alias_ using the fully qualified name using ```printDsl(df,true)```, yo
 |--------------|---------|
 | Java         | 8       |
 | Scala        | 2.11    |
-| Apache Spark | 2.3     |
+| Apache Spark | 2.2     |
 
 ## Author
 Daniel Mantovani [daniel.mantovani@modakanalytics.com](mailto:daniel.mantovani@modakanalytics.com)

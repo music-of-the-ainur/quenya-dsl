@@ -8,7 +8,7 @@ ThisBuild / scalaVersion := scala211
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
-val sparkVersion = "2.3.4"
+val sparkVersion = "2.2.3"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
