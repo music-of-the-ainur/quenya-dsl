@@ -1,5 +1,5 @@
 ThisBuild / name := "quenya-dsl"
-ThisBuild / organization := "com.github.music.of.the.ainur.quenya"
+ThisBuild / organization := "com.github.music-of-the-ainur"
 
 lazy val scala212 = "2.12.10"
 lazy val scala211 = "2.11.12"
