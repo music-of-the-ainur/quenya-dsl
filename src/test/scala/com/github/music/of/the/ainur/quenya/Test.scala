@@ -2,6 +2,7 @@ package com.github.music.of.the.ainur.quenya
 
 import org.scalatest.{FunSuite, BeforeAndAfter}
 import org.apache.spark.sql.SparkSession
+import com.databricks.spark.xml._
 
 class Test extends FunSuite with BeforeAndAfter {
   val spark:SparkSession = SparkSession.builder().master("local[*]").getOrCreate()
@@ -49,7 +50,19 @@ class Test extends FunSuite with BeforeAndAfter {
   test("data should be exactly the same") {
     assert(diff == 0)
   }
+  val xmlData = Seq()
+  val xmlDf = spark.read
+    .option("rowTag", "foo")
+    .xml("src/test/resources/xmldata.xml")
 
+  val xmlDsl = quenyaDsl.compile("""
+      |bar@ba
+      | ba$bar:LongType""".stripMargin)
+  val xmlDslDf = quenyaDsl.execute(xmlDsl, xmlDf)
+  val xmlDslDfCount = xmlDslDf.count()
+  test("number of records should be 3"){
+    assert(xmlDslDfCount == 3)
+  }
   after {
     spark.stop()
   }
