@@ -50,21 +50,34 @@ class Test extends FunSuite with BeforeAndAfter {
   test("data should be exactly the same") {
     assert(diff == 0)
   }
-  val xmlData = Seq()
-  val xmlDf = spark.read
-    .option("rowTag", "foo")
-    .xml("src/test/resources/xmldata.xml")
+  val xmlDf1 = spark.read
+    .option("rowTag", "foo").xml("src/test/resources/xmldata1.xml")
+
+  val xmlDf2 = spark.read
+    .option("rowTag", "foo").xml("src/test/resources/xmldata2.xml")
+  val xmlDf3 = spark.read
+    .option("rowTag", "foo").xml("src/test/resources/xmldata3.xml")
+
 
   val xmlDsl = quenyaDsl.compile("""
       |bar@ba
       | ba$bar:LongType""".stripMargin)
-  val xmlDslDf = quenyaDsl.execute(xmlDsl, xmlDf)
+
+  val xmlDslDf1 = quenyaDsl.execute(xmlDsl, xmlDf1)
+  val xmlDslDf2 = quenyaDsl.execute(xmlDsl, xmlDf2)
+  val xmlDslDf3 = quenyaDsl.execute(xmlDsl, xmlDf3)
+  val xmlDslDf = xmlDslDf1.union(xmlDslDf2)
   val xmlDslDfCount = xmlDslDf.count()
+
   test("number of records should be 3"){
     assert(xmlDslDfCount == 3)
+  }
+  val dif = xmlDslDf.as("xml1").join(xmlDslDf3.as("xml2"),
+    $"xml1.bar" <=> $"xml2.bar","leftanti").count()
+  test("dif should be 0"){
+    assert(dif==0)
   }
   after {
     spark.stop()
   }
-
 }
