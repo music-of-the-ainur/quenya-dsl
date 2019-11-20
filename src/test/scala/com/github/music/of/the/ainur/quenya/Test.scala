@@ -1,7 +1,7 @@
 package com.github.music.of.the.ainur.quenya
 
-import org.scalatest.{FunSuite, BeforeAndAfter}
-import org.apache.spark.sql.SparkSession
+import org.scalatest.{BeforeAndAfter, FunSuite}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import com.databricks.spark.xml._
 
 class Test extends FunSuite with BeforeAndAfter {
@@ -50,13 +50,11 @@ class Test extends FunSuite with BeforeAndAfter {
   test("data should be exactly the same") {
     assert(diff == 0)
   }
-  val xmlDf1 = spark.read
-    .option("rowTag", "foo").xml("src/test/resources/xmldata1.xml")
 
-  val xmlDf2 = spark.read
-    .option("rowTag", "foo").xml("src/test/resources/xmldata2.xml")
-  val xmlDf3 = spark.read
-    .option("rowTag", "foo").xml("src/test/resources/xmldata3.xml")
+
+  val xmlDf1 = xmlToDf("<foo><bar>1</bar><bar>1</bar></foo>")
+  val xmlDf2 = xmlToDf("<foo><bar>1</bar></foo>")
+
 
 
   val xmlDsl = quenyaDsl.compile("""
@@ -65,19 +63,43 @@ class Test extends FunSuite with BeforeAndAfter {
 
   val xmlDslDf1 = quenyaDsl.execute(xmlDsl, xmlDf1)
   val xmlDslDf2 = quenyaDsl.execute(xmlDsl, xmlDf2)
-  val xmlDslDf3 = quenyaDsl.execute(xmlDsl, xmlDf3)
-  val xmlDslDf = xmlDslDf1.union(xmlDslDf2)
-  val xmlDslDfCount = xmlDslDf.count()
+  val xmlDslDf1Count = xmlDslDf1.count()
+  val xmlDslDf2Count = xmlDslDf2.count()
 
-  test("number of records should be 3"){
-    assert(xmlDslDfCount == 3)
+
+  // test to check the number of elements in the df from first xml string are exactly 2
+  test("number of records should be 2"){
+    assert(xmlDslDf1Count == 2)
   }
-  val dif = xmlDslDf.as("xml1").join(xmlDslDf3.as("xml2"),
-    $"xml1.bar" <=> $"xml2.bar","leftanti").count()
-  test("dif should be 0"){
-    assert(dif==0)
+
+  // test to check the number of elements in the df from second xml string are exactly 1
+  test("number of records should be 1"){
+    assert(xmlDslDf2Count == 1)
+  }
+
+  val checkXml1 = checkData(xmlDslDf1)
+  val checkXml2 = checkData(xmlDslDf2)
+  // test to check the data of df from first xml
+  test("checking data for first xml"){
+    assert(checkXml1)
+  }
+
+  // test to check the data of df from second xml
+  test("checking data for second xml"){
+    assert(checkXml2)
   }
   after {
     spark.stop()
+  }
+
+  // returns true if all the elements in the bar column of df are equal to 1
+  def checkData(df:DataFrame): Boolean = {
+    df.select("bar").as[Long].collect().forall(i=>i==1)
+  }
+
+
+//  function to convert xml string to df
+  def xmlToDf(xml: String): DataFrame = {
+    new XmlReader().xmlRdd(spark, spark.sparkContext.parallelize(Seq(xml)))
   }
 }
