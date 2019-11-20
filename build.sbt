@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
   "org.scalatest" %% "scalatest" % "3.0.5" % "test",
-  "com.databricks" %% "spark-xml" % "0.7.0"
+  "com.databricks" %% "spark-xml" % "0.7.0" % "test"
 )
 
 enablePlugins(GitVersioning)
