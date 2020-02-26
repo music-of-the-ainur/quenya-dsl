@@ -1,6 +1,7 @@
 # Quenya DSL
 
 [![Build Status](https://travis-ci.org/music-of-the-ainur/quenya-dsl.svg?branch=master)](https://travis-ci.org/music-of-the-ainur/quenya-dsl)
+[![Gitter Community](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/music-of-the-ainur/community)
 
 Adding Quenya DSL dependency to your sbt build:
 
