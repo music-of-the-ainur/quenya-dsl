@@ -8,7 +8,7 @@ class Test extends FunSuite with BeforeAndAfter {
     .master("local[*]")
     .config("spark.sql.shuffle.partitions", "1")
     .getOrCreate()
-
+  
   spark.sparkContext.setLogLevel("ERROR")
 
   val data = Seq(

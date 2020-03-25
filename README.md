@@ -5,7 +5,13 @@
 Adding Quenya DSL dependency to your sbt build:
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-2.4"
+libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.0.2-$SPARK_VERSION"
+```
+
+To run in spark-shell:
+
+```
+spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.11:1.0.2-$SPARK_VERSION"
 ```
 
 ## Introduction
