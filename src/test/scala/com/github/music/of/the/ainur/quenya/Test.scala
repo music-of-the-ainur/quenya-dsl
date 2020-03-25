@@ -4,7 +4,11 @@ import org.scalatest.{FunSuite, BeforeAndAfter}
 import org.apache.spark.sql.SparkSession
 
 class Test extends FunSuite with BeforeAndAfter {
-  val spark:SparkSession = SparkSession.builder().master("local[*]").getOrCreate()
+  val spark = almaren.spark
+    .master("local[*]")
+    .config("spark.sql.shuffle.partitions", "1")
+    .getOrCreate()
+
   spark.sparkContext.setLogLevel("ERROR")
 
   val data = Seq(
