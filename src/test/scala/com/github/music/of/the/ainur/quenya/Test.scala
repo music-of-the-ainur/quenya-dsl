@@ -4,7 +4,7 @@ import org.scalatest.{FunSuite, BeforeAndAfter}
 import org.apache.spark.sql.SparkSession
 
 class Test extends FunSuite with BeforeAndAfter {
-  val spark = almaren.spark
+  val spark = SparkSession.builder()
     .master("local[*]")
     .config("spark.sql.shuffle.partitions", "1")
     .getOrCreate()
