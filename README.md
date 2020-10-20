@@ -208,7 +208,7 @@ You can _alias_ using the fully qualified name using ```printDsl(df,true)```, yo
 | Apache Spark | 2.4       |
 
 ## Author
-Daniel Mantovani [daniel.mantovani@modakanalytics.com](mailto:daniel.mantovani@modak.com)
+Daniel Mantovani [daniel.mantovani@modak.com](mailto:daniel.mantovani@modak.com)
 
 ## Sponsor
 [![Modak Analytics](/docs/img/modak_analytics.png)](http://www.modak.com)
