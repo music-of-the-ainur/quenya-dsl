@@ -37,7 +37,8 @@ object ParserQuenyaDsl extends JavaTokenParsers {
   def expression: Parser[Statement] = precedence ~ col ~ operator ^^ {
     case prec ~ cl ~ op =>
       op match {
-        case al ~ ":" ~ dt => Statement(prec,cl,DOLLAR,al.toString(),dt.asInstanceOf[Option[DataType]])
+        case al ~ Some(semicolumn) ~ dt => Statement(prec,cl,DOLLAR,al.toString(),dt.asInstanceOf[Option[DataType]])
+        case al ~ None => Statement(prec,cl,DOLLAR,al.toString(),None)
         case al:String => Statement(prec,cl,AT,al)
       }
   }
@@ -49,7 +50,7 @@ object ParserQuenyaDsl extends JavaTokenParsers {
   def element: Parser[Option[String]] = "[" ~> opt("""\d+""".r) <~ "]"
   def operator: Parser[Any] = at | dollar
   def at: Parser[String] = "@" ~> alias
-  def dollar : Parser[Any] = "$" ~> alias ~ ":" ~ datatype
+  def dollar : Parser[Any] = "$" ~> alias ~ opt(":") ~ datatype
   def alias : Parser[String] = "[0-9a-zA-Z_]+".r
   def datatype : Parser[Option[DataType]] = ("BinaryType" ^^ (dt => Some(BinaryType))
     | "FloatType" ^^ (dt => Some(FloatType))
