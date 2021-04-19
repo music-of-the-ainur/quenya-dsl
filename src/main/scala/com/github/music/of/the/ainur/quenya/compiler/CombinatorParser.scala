@@ -38,7 +38,10 @@ object ParserQuenyaDsl extends JavaTokenParsers {
     case prec ~ cl ~ op =>
       op match {
         case al ~ Some(semicolumn) ~ dt => Statement(prec,cl,DOLLAR,al.toString(),dt.asInstanceOf[Option[DataType]])
-        case al ~ None => Statement(prec,cl,DOLLAR,al.toString(),None)
+        // neet to decompose "alias" otherwise it will like "foo~None" as alias.
+        case al ~ None => al match {
+          case a ~ None => Statement(prec,cl,DOLLAR,a.toString(),None)
+        }
         case al:String => Statement(prec,cl,AT,al)
       }
   }
