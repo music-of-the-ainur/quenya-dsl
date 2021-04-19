@@ -44,6 +44,7 @@ ThisBuild / licenses := List("Apache 2" -> new URL("http://www.apache.org/licens
 ThisBuild / homepage := Some(url("https://github.com/music-of-the-ainur/quenya-dsl"))
 
 // Remove all additional repository other than Maven Central from POM
+credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credential")
 ThisBuild / pomIncludeRepository := { _ => false }
 ThisBuild / publishTo := {
   val nexus = "https://oss.sonatype.org/"
