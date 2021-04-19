@@ -31,7 +31,10 @@ private[quenya] trait SparkCodeGenerator extends LazyLogging {
       case DOLLAR =>
         statement.col.element match {
           case Some(item) => col(statement.col.name).getItem(item.toInt).cast(statement.dataType.getOrElse(throw NullDataType()))
-          case None => col(statement.col.name).cast(statement.dataType.getOrElse(throw NullDataType()))
+          case None => statement.dataType match {
+            case Some(dt) => col(statement.col.name).cast(dt)
+            case None => col(statement.col.name)
+          }
         }
       case AT => explode_outer(col(statement.col.name))
     }
