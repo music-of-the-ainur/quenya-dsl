@@ -2,12 +2,11 @@ language: scala
 
 jdk: openjdk8
 
-scala:
-  - 2.11.12
-  - 2.12.10
-
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION test
+  - sbt ++test
+
+before_install:
+  - sudo apt-get -y install sbt
 
 cache:
   directories:
@@ -17,7 +16,5 @@ cache:
 
 before_cache:
   - rm -fv $HOME/.ivy2/.sbt.ivy.lock
-  - rm -Rf $HOME/.cache
-  - rm -Rf $HOME/.ivy2
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
   - find $HOME/.sbt        -name "*.lock"               -print -delete
