@@ -5,6 +5,7 @@ project/metals.sbt
 
 # spark
 spark-warehouse
+.bsp
 
 metastore_db
 .gradle
