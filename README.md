@@ -148,6 +148,16 @@ val quenyaDsl = QuenyaDSL
 quenyaDsl.printDsl(df)
 ```
 
+## Get DSL as String
+```scala
+import com.github.music.of.the.ainur.quenya.QuenyaDSL
+
+val df:DataFrame= ...
+val quenyaDsl = QuenyaDSL
+val strDsl= quenyaDsl.getDslStr(df)
+```
+
+
 json:
 ```
 { 

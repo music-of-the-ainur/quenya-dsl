@@ -1,7 +1,7 @@
 package com.github.music.of.the.ainur.quenya
 
-import org.scalatest.{FunSuite, BeforeAndAfter}
 import org.apache.spark.sql.SparkSession
+import org.scalatest.{BeforeAndAfter, FunSuite}
 
 class Test extends FunSuite with BeforeAndAfter {
   val spark = SparkSession.builder()
@@ -40,6 +40,25 @@ class Test extends FunSuite with BeforeAndAfter {
 
   test("number of records should match") {
     assert(dslCount == csvCount)
+  }
+//dsl we got using main printDsl function
+  val strDslmain="""name.firstname$firstname:StringType
+                   |name.middlename$middlename:StringType
+                   |name.lastname$lastname:StringType
+                   |id$id:StringType
+                   |languagesAtSchool@languagesAtSchool
+                   |	languagesAtSchool$languagesAtSchool:StringType
+                   |gender$gender:StringType
+                   |salary$salary:IntegerType
+                   |""".stripMargin
+
+val df2=spark.read.parquet("src/test/resources/sampleDf.parquet")
+
+  val strDsltest=quenyaDsl.getDslStr(df2)
+
+  test("String Dsl test")
+  {
+    assert(strDsltest==strDslmain)
   }
 
   val diff = dslDf.as("dsl").join(csvDf.as("csv"),
