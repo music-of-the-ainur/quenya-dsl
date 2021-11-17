@@ -62,7 +62,7 @@ JSON
    },
    "race":"Maiar",
    "age":"immortal",
-   "weapon":[ 
+   "weapons":[ 
       "Glamdring",
       "Narya",
       "Wizard Staff"
@@ -86,7 +86,7 @@ Example:
 
 DSL
 ```
-weapon@weapon
+weapons@weapon
     weapon$weapon:StringType
 ```
 
@@ -103,7 +103,7 @@ JSON
    },
    "race":"Maiar",
    "age":"immortal",
-   "weapon":[ 
+   "weapons":[ 
       "Glamdring",
       "Narya",
       "Wizard Staff"
