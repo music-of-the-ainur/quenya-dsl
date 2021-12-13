@@ -9,12 +9,8 @@ ThisBuild / scalaVersion := scala212
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
-val sparkVersionReg = raw"(\d.\d.\d)".r
-val sparkVersion = scala.sys.process.Process("git rev-parse --abbrev-ref HEAD").lineStream.head.replace("spark-","") match {
-  case sparkVersionReg(sv) => sv
-  case _ => "2.4.5"
-}
-
+val sparkVersion = "2.4.8"
+ 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
