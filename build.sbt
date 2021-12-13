@@ -8,12 +8,12 @@ ThisBuild / scalaVersion := scala212
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
-val sparkVersion = "3.1.2"
+val sparkVersion = "3.2.0"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4",
   "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 )
 
