@@ -11,7 +11,7 @@ libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.0-
 To run in spark-shell:
 
 ```
-spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.11:1.2.0-$SPARK_VERSION"
+spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.0-$SPARK_VERSION"
 ```
 
 ## Introduction
@@ -198,14 +198,6 @@ You can _alias_ using the fully qualified name using ```printDsl(df,true)```, yo
  <datatype> ::= BinaryType | BooleanType | StringType | TimestampType | DecimalType 
  | DoubleType | FloatType | ByteType | IntegerType | LongType | ShortType
 ```
-
-## Requirements
-
-| Software     | Version   |
-|--------------|-----------|
-| Java         | 8         |
-| Scala        | 2.11/2.12 |
-| Apache Spark | 2.4       |
 
 ## Author
 Daniel Mantovani [daniel.mantovani@modak.com](mailto:daniel.mantovani@modak.com)
