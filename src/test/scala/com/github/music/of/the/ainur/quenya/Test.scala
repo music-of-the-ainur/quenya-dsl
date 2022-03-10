@@ -23,6 +23,7 @@ class Test extends FunSuite with BeforeAndAfter {
 
   val quenyaDsl = QuenyaDSL
 
+
   val dsl = quenyaDsl.compile("""
  |age$age:LongType
  |name.LastName$LastName:StringType
@@ -53,6 +54,21 @@ class Test extends FunSuite with BeforeAndAfter {
   test("data should be exactly the same") {
     assert(diff == 0)
   }
+
+
+  val dslMatch = """age$age:LongType
+name.LastName$LastName:StringType
+name.nameOne$nameOne:StringType
+name.nickNames@nickNames
+	nickNames$nickNames:StringType
+race$race:StringType
+weapon@weapon
+	weapon$weapon:StringType"""
+
+  test("DSL generate") {
+    assert(dslMatch == quenyaDsl.getDsl(df))
+  }
+
 
   after {
     spark.stop()
