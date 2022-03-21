@@ -138,7 +138,8 @@ Output:
 
 ## DSL Generator
 
-You can generate a DSL based on a DataFrame:
+### printDsl
+You can generate and print a DSL based on a DataFrame:
 
 ```scala
 import com.github.music.of.the.ainur.quenya.QuenyaDSL
@@ -147,6 +148,18 @@ val df:DataFrame = ...
 val quenyaDsl = QuenyaDSL
 quenyaDsl.printDsl(df)
 ```
+
+### getDsl
+You can generate and asssign a DSL to variable based on a DataFrame:
+
+```scala
+import com.github.music.of.the.ainur.quenya.QuenyaDSL
+
+val df:DataFrame = ...
+val quenyaDsl = QuenyaDSL
+val dsl = quenyaDsl.getDsl(df)
+```
+
 
 json:
 ```
