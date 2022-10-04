@@ -2,8 +2,9 @@ ThisBuild / name := "quenya-dsl"
 ThisBuild / organization := "com.github.music-of-the-ainur"
 
 lazy val scala212 = "2.12.10"
+lazy val scala213 = "2.13.9"
 
-crossScalaVersions := Seq(scala212)
+crossScalaVersions := Seq(scala212,scala213)
 ThisBuild / scalaVersion := scala212
 
 scalacOptions ++= Seq("-deprecation", "-feature")
@@ -14,7 +15,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4",
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+  "org.scalatest" %% "scalatest" % "3.2.14" % "test"
 )
 
 enablePlugins(GitVersioning)
