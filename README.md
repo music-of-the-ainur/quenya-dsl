@@ -11,7 +11,7 @@ libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.2-
 To run in spark-shell:
 
 ```
-spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12ls:1.2.2-3.1"
+spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.1"
 ```
 ### Connector Usage
 
