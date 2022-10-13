@@ -1,9 +1,10 @@
 package com.github.music.of.the.ainur.quenya
 
-import org.scalatest.{FunSuite, BeforeAndAfter}
+import org.scalatest._
+import org.scalatest.funsuite.AnyFunSuite
 import org.apache.spark.sql.SparkSession
 
-class Test extends FunSuite with BeforeAndAfter {
+class Test extends AnyFunSuite with BeforeAndAfter {
   val spark = SparkSession.builder()
     .master("local[*]")
     .config("spark.sql.shuffle.partitions", "1")
