@@ -11,7 +11,7 @@ libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.2-
 To run in spark-shell:
 
 ```
-spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.3"
+spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.0-$SPARK_VERSION"
 ```
 
 ### Connector Usage
@@ -155,7 +155,8 @@ Output:
 
 ## DSL Generator
 
-You can generate a DSL based on a DataFrame:
+### printDsl
+You can generate and print a DSL based on a DataFrame:
 
 ```scala
 import com.github.music.of.the.ainur.quenya.QuenyaDSL
@@ -164,6 +165,18 @@ val df:DataFrame = ...
 val quenyaDsl = QuenyaDSL
 quenyaDsl.printDsl(df)
 ```
+
+### getDsl
+You can generate and asssign a DSL to variable based on a DataFrame:
+
+```scala
+import com.github.music.of.the.ainur.quenya.QuenyaDSL
+
+val df:DataFrame = ...
+val quenyaDsl = QuenyaDSL
+val dsl = quenyaDsl.getDsl(df)
+```
+
 
 json:
 ```
@@ -215,14 +228,6 @@ You can _alias_ using the fully qualified name using ```printDsl(df,true)```, yo
  <datatype> ::= BinaryType | BooleanType | StringType | TimestampType | DecimalType 
  | DoubleType | FloatType | ByteType | IntegerType | LongType | ShortType
 ```
-
-## Requirements
-
-| Software     | Version   |
-|--------------|-----------|
-| Java         | 8         |
-| Scala        | 2.11/2.12 |
-| Apache Spark | 2.4       |
 
 ## Author
 Daniel Mantovani [daniel.mantovani@modak.com](mailto:daniel.mantovani@modak.com)
