@@ -14,8 +14,8 @@ val sparkVersion = "2.4.8"
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+  "org.scalatest" %% "scalatest" % "3.2.14" % "test"
 )
 
 enablePlugins(GitVersioning)
