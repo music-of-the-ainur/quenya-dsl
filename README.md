@@ -255,14 +255,6 @@ race$race:StringType
  | DoubleType | FloatType | ByteType | IntegerType | LongType | ShortType
 ```
 
-## Requirements
-
-| Software     | Version   |
-|--------------|-----------|
-| Java         | 8         |
-| Scala        | 2.11/2.12 |
-| Apache Spark | 2.4       |
-
 ## Author
 Daniel Mantovani [daniel.mantovani@modak.com](mailto:daniel.mantovani@modak.com)
 
