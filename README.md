@@ -13,11 +13,8 @@ To run in spark-shell:
 ```
 spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.1"
 ```
-### Connector Usage
 
-#### Maven / Ivy Package Usage
-Quenya-DSL is available in Maven Central
-[Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
+Quenya-DSL is available in [Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
 repository.
 
 | Versions                   | Connector Artifact                                        |
