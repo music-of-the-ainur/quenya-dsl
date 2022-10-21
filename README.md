@@ -1,8 +1,8 @@
-# Quenya DSL
+# Quenya-DSL
 
 [![Build-Status](https://github.com/music-of-the-ainur/quenya-dsl/actions/workflows/quenya-dsl-githubactions.yml/badge.svg)](https://github.com/music-of-the-ainur/quenya-dsl/actions/workflows/quenya-dsl-githubactions.yml)
 
-Adding Quenya DSL dependency to your sbt build:
+Adding Quenya-DSL dependency to your sbt build:
 
 ```
 libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.2-3.1"
@@ -16,12 +16,11 @@ spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.1"
 ### Connector Usage
 
 #### Maven / Ivy Package Usage
-The connector is also available from the
+Quenya-DSL is available in Maven Central
 [Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
-repository. It can be used using the `--packages` option or the
-`spark.jars.packages` configuration property. Use the following value
+repository.
 
-| version                    | Connector Artifact                                        |
+| Versions                   | Connector Artifact                                        |
 |----------------------------|-----------------------------------------------------------|
 | Spark 3.3.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.3` |
 | Spark 3.3.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.3` |
@@ -33,7 +32,7 @@ repository. It can be used using the `--packages` option or the
 
 
 ## Introduction
-Quenya DSL(Domain Specific Language) is a language that simplifies the task to parser complex semi-structured data.
+Quenya-DSL(Domain Specific Language) is a language that simplifies the task to parser complex semi-structured data.
 
 ```scala
 
@@ -156,7 +155,7 @@ Output:
 
 ## DSL Generator
 
-You can generate a DSL based on a DataFrame:
+You can generate the DSL from an existing DataFrame:
 
 ```scala
 import com.github.music.of.the.ainur.quenya.QuenyaDSL
