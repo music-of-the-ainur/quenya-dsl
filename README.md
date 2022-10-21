@@ -202,6 +202,43 @@ weapon@weapon
 
 You can _alias_ using the fully qualified name using ```printDsl(df,true)```, you should turn on in case of name conflict.
 
+## DLS usage for Json keys containing special characters like spaces ,';', '-' and ':'
+
+json:
+```
+{ 
+   "name":{ 
+      "name One":"Mithrandir",
+      "Last-Name":"Olórin",
+      "nick:Names":[ 
+         "Gandalf the Grey",
+         "Gandalf the White"
+      ]
+   },
+   "race":"Maiar",
+   "age":"immortal",
+   "weapon;name":[ 
+      "Glamdring",
+      "Narya",
+      "Wizard Staff"
+   ]
+}
+```
+
+Enclose column names in **``**  to handle special characters
+
+DSL:
+```
+age$age:StringType
+`name.Last-Name`$`Last-Name`:StringType
+`name.name One`$`name-One`:StringType
+`name.nick:Names`@`nick:Names`
+        `nick:Names`$`nick:Names`:StringType
+race$race:StringType
+`weapon;name`@`weapon;name`
+        `weapon;name`$`weapon_name`:StringType
+```
+
 ## Backus–Naur form
 
 ```
