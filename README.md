@@ -202,7 +202,10 @@ weapon@weapon
 
 You can _alias_ using the fully qualified name using ```printDsl(df,true)```, you should turn on in case of name conflict.
 
-## DLS usage for Json keys containing special characters like spaces ,';', '-' and ':'
+## How to Handle Special Characters like spaces,';','-' and ':'
+
+Use the literal **``**  to handle special characters, you can also use in the alias statement.
+Example:
 
 json:
 ```
@@ -224,8 +227,6 @@ json:
    ]
 }
 ```
-
-Enclose column names in **``**  to handle special characters
 
 DSL:
 ```
