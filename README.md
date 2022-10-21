@@ -204,7 +204,7 @@ You can _alias_ using the fully qualified name using ```printDsl(df,true)```, yo
 
 ## How to Handle Special Characters
 
-Use the literal backtick **``**  to handle special characters like spaces,semicolons,hyphen and colon. 
+Use the literal backtick **``**  to handle special characters like space, semicolon, hyphen and colon. 
 Example:
 
 json:
