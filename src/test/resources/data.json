@@ -1,0 +1,50 @@
+{
+  "Coffee": {
+    "sub region": [
+      {
+        "id": 1,
+        "full name": "John Doe"
+      },
+      {
+        "id": 2,
+        "name": "Don Joeh"
+      }
+    ],
+    "country": {
+      "id": 2,
+      "company": "ACME"
+    }
+  },
+  "brewing": {
+    "sub-region": [
+      {
+        "id": 1,
+        "name": "John Doe"
+      },
+      {
+        "id": 2,
+        "name": "Don Joeh"
+      }
+    ],
+    "world:country": {
+      "id": 2,
+      "company": "ACME"
+    }
+  },
+  "brewing2": {
+    "sub;region": [
+      {
+        "id": 1,
+        "name": "John Doe"
+      },
+      {
+        "id": 2,
+        "name": "Don Joeh"
+      }
+    ],
+    "world;country": {
+      "id": 2,
+      "company": "ACME"
+    }
+  }
+}

@@ -1,8 +1,8 @@
-# Quenya DSL
+# Quenya-DSL
 
 [![Build Status](https://github.com/music-of-the-ainur/quenya-dsl/actions/workflows/quneys-dsl-githubactions.yml/badge.svg)](https://github.com/music-of-the-ainur/quenya-dsl/actions/workflows/quneys-dsl-githubactions.yml)
 
-Adding Quenya DSL dependency to your sbt build:
+Adding Quenya-DSL dependency to your sbt build:
 
 ```
 libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.2-$SPARK_VERSION"
@@ -14,15 +14,11 @@ To run in spark-shell:
 spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.0-$SPARK_VERSION"
 ```
 
-### Connector Usage
 
-#### Maven / Ivy Package Usage
-The connector is also available from the
-[Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
-repository. It can be used using the `--packages` option or the
-`spark.jars.packages` configuration property. Use the following value
+Quenya-Dsl is available in [Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
+repository. 
 
-| version                    | Connector Artifact                                        |
+| versions                   | Connector Artifact                                        |
 |----------------------------|-----------------------------------------------------------|
 | Spark 3.3.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.3` |
 | Spark 3.3.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.3` |
@@ -32,7 +28,7 @@ repository. It can be used using the `--packages` option or the
 | Spark 2.4.x and scala 2.11 | `com.github.music-of-the-ainur:quenya-dsl_2.11:1.2.2-2.4` |
 
 ## Introduction
-Quenya DSL(Domain Specific Language) is a language that simplifies the task to parser complex semi-structured data.
+Quenya-DSL(Domain Specific Language) is a language that simplifies the task to parser complex semi-structured data.
 
 ```scala
 
@@ -155,8 +151,7 @@ Output:
 
 ## DSL Generator
 
-### printDsl
-You can generate and print a DSL based on a DataFrame:
+You can generate the DSL from an existing DataFrame:
 
 ```scala
 import com.github.music.of.the.ainur.quenya.QuenyaDSL
@@ -213,6 +208,50 @@ weapon@weapon
 ```
 
 You can _alias_ using the fully qualified name using ```printDsl(df,true)```, you should turn on in case of name conflict.
+
+## How to Handle Special Characters
+
+
+
+Use the literal backtick **``**  to handle special characters like space,semicolon,hyphen and colon.
+Example:
+
+
+
+json:
+```
+{
+   "name":{
+      "name One":"Mithrandir",
+      "Last-Name":"Olórin",
+      "nick:Names":[
+         "Gandalf the Grey",
+         "Gandalf the White"
+      ]
+   },
+   "race":"Maiar",
+   "age":"immortal",
+   "weapon;name":[
+      "Glamdring",
+      "Narya",
+      "Wizard Staff"
+   ]
+}
+```
+
+
+
+DSL:
+```
+age$age:StringType
+`name.Last-Name`$`Last-Name`:StringType
+`name.name One`$`name-One`:StringType
+`name.nick:Names`@`nick:Names`
+        `nick:Names`$`nick:Names`:StringType
+race$race:StringType
+`weapon;name`@`weapon;name`
+        `weapon;name`$`weapon_name`:StringType
+```
 
 ## Backus–Naur form
 
