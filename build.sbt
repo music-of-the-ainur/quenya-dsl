@@ -1,7 +1,7 @@
 ThisBuild / name := "quenya-dsl"
 ThisBuild / organization := "com.github.music-of-the-ainur"
 
-lazy val scala212 = "2.12.10"
+lazy val scala212 = "2.12.15"
 lazy val scala213 = "2.13.9"
 
 crossScalaVersions := Seq(scala212,scala213)
@@ -9,7 +9,7 @@ ThisBuild / scalaVersion := scala212
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
-val sparkVersion = "3.3.0"
+val sparkVersion = "3.4.0"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
