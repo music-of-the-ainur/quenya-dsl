@@ -5,20 +5,23 @@
 Adding Quenya-DSL dependency to your sbt build:
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.2-3.2"
+libraryDependencies += "com.github.music-of-the-ainur" %% "quenya-dsl" % "1.2.2-$SPARK_VERSION"
 ```
 
 To run in spark-shell:
 
 ```
-spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.2"
+spark-shell --packages "com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-$SPARK_VERSION"
 ```
 
-Quenya-DSL is available in [Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
+
+Quenya-Dsl is available in [Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
 repository. 
 
 | versions                   | Connector Artifact                                        |
 |----------------------------|-----------------------------------------------------------|
+| Spark 3.4.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.4` |
+| Spark 3.4.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.4` |
 | Spark 3.3.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.3` |
 | Spark 3.3.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.3` |
 | Spark 3.2.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.2` |
@@ -88,7 +91,7 @@ Output:
 +----------+----------------+
 |firstName |firstNickName   |
 +----------+----------------+
-|Mithrandir|Gandalf the Grey|
+|Mithrandir|Gandalf the Grey|
 +----------+----------------+
 ```
 ### @ i.e AT
@@ -160,6 +163,18 @@ val quenyaDsl = QuenyaDSL
 quenyaDsl.printDsl(df)
 ```
 
+### getDsl
+You can generate and asssign a DSL to variable based on a DataFrame:
+
+```scala
+import com.github.music.of.the.ainur.quenya.QuenyaDSL
+
+val df:DataFrame = ...
+val quenyaDsl = QuenyaDSL
+val dsl = quenyaDsl.getDsl(df)
+```
+
+
 json:
 ```
 { 
@@ -196,31 +211,37 @@ weapon@weapon
 
 You can _alias_ using the fully qualified name using ```printDsl(df,true)```, you should turn on in case of name conflict.
 
-## How to Handle Special Characters 
+## How to Handle Special Characters
+
+
 
 Use the literal backtick **``**  to handle special characters like space,semicolon,hyphen and colon.
 Example:
 
+
+
 json:
 ```
-{ 
-   "name":{ 
+{
+   "name":{
       "name One":"Mithrandir",
       "Last-Name":"Olórin",
-      "nick:Names":[ 
+      "nick:Names":[
          "Gandalf the Grey",
          "Gandalf the White"
       ]
    },
    "race":"Maiar",
    "age":"immortal",
-   "weapon;name":[ 
+   "weapon;name":[
       "Glamdring",
       "Narya",
       "Wizard Staff"
    ]
 }
 ```
+
+
 
 DSL:
 ```
@@ -233,7 +254,6 @@ race$race:StringType
 `weapon;name`@`weapon;name`
         `weapon;name`$`weapon_name`:StringType
 ```
-
 
 ## Backus–Naur form
 
