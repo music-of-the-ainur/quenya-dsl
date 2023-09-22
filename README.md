@@ -20,6 +20,8 @@ repository.
 
 | versions                   | Connector Artifact                                        |
 |----------------------------|-----------------------------------------------------------|
+| Spark 3.5.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.5` |
+| Spark 3.5.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.5` |
 | Spark 3.4.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.4` |
 | Spark 3.4.x and scala 2.12 | `com.github.music-of-the-ainur:quenya-dsl_2.12:1.2.2-3.4` |
 | Spark 3.3.x and scala 2.13 | `com.github.music-of-the-ainur:quenya-dsl_2.13:1.2.2-3.3` |
